@@ -1,0 +1,19 @@
+{
+  "name": "automate-out",
+  "version": "1.0.0",
+  "description": "Automate your way out of space with robot helpers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Corey Ferguson <corey.t.ferguson@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "phaser",
+    "game",
+    "automate",
+    "robot",
+    "javascript",
+    "web"
+  ]
+}
