@@ -1,0 +1,27 @@
+{
+  "name": "Stranded",
+  "world": {
+    "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 5000,
+        "height": 5000
+    }
+  },
+  "resources": [
+    {
+      "type": "iron",
+      "x": 2250,
+      "y": 2250
+    },
+    {
+      "type": "iron",
+      "x": 2750,
+      "y": 2750
+    }
+  ],
+  "shuttle": {
+    "x": 2500,
+    "y": 2500
+  }
+}

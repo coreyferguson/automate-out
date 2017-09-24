@@ -1,36 +1,54 @@
 
 const Camera = require('./Camera');
+const Resources = require('./Resources');
+const Shuttle = require('./Shuttle');
+const levels = require('./levels');
 
 const game = new Phaser.Game(
 	window.innerWidth,
 	window.innerHeight,
 	Phaser.AUTO
 );
+
 const camera = new Camera(game);
+const resources = new Resources(game);
+const shuttle = new Shuttle(game);
 
 const state = {
 
 	preload: function() {
-		this.load.image('background', 'assets/images/background.jpg');
-		this.load.image('shuttle', 'assets/images/shuttle.png');
+		camera.preload();
+		resources.preload();
+		shuttle.preload();
+		this.load.image('background', 'assets/images/background.png');
 	},
 
 	create: function() {
-		this.game.world.setBounds(0, 0, 5000, 5000);
-		camera.create();
+		const level = levels[0];
 
-		// background
-		this.background = this.game.add.sprite(0, 0, 'background');
+		this.game.world.setBounds(
+			level.world.bounds.x,
+			level.world.bounds.y,
+			level.world.bounds.width,
+			level.world.bounds.height
+		);
 
-		// shuttle
-		this.shuttle = this.game.add.sprite(this.game.world.centerY, this.game.world.centerY, 'shuttle');
-		this.shuttle.anchor.setTo(0, 0.5);
-		this.shuttle.scale.setTo(0.5);
-		this.shuttle.angle = 0;
+		this.background = this.game.add.tileSprite(
+			0,
+			0,
+			level.world.bounds.width,
+			level.world.bounds.height,
+			'background'
+		);
+
+		shuttle.create(level);
+		camera.create(level);
+		resources.create(level);
 	},
 
 	update: function() {
 		camera.update();
+		resources.update();
 	}
 
 };

@@ -8,6 +8,9 @@ class Camera {
 		this.dragFromY = null;
 	}
 
+	preload() {
+	}
+
 	create() {
 		this.game.camera.x = this.game.world.centerX - this.game.width/2;
 		this.game.camera.y = this.game.world.centerY - this.game.height/2;
