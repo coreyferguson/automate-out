@@ -9,11 +9,14 @@ class MapState {
 		// resources.preload();
 		// shuttle.preload();
 		ioc.game.load.image('background', 'assets/images/background.png');
+
+		ioc.mapStates.forEach(state => {
+			state.preload();
+		});
 	}
 
 	create() {
-		// const level = levels[0];
-
+		const level = ioc.levels[0];
 		// game.world.setBounds(
 		// 	level.world.bounds.x,
 		// 	level.world.bounds.y,
@@ -33,6 +36,8 @@ class MapState {
 		// construction.create(level);
 		// resources.create(level);
 		// shuttle.create(level);
+
+		ioc.mapStates.forEach(state => state.create(level));
 	}
 
 	update() {
