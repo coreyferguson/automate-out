@@ -1,2 +1,2 @@
 
-module.exports = require('./shuttle');
+module.exports = require('./Shuttle');

@@ -3,6 +3,10 @@ class Shuttle {
 
 	constructor(game) {
 		this.game = game;
+		this.resources = {
+			energy: 100,
+			iron: 0
+		};
 	}
 
 	preload() {
