@@ -8,5 +8,6 @@ container.levels = require('../levels');
 container.mapState = require('../game/states/mapState');
 container.mapStates = [
 	require('../shuttle'),
-	require('../camera')
+	require('../camera'),
+	require('../resources/iron')
 ];
