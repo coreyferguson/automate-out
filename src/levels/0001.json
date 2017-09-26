@@ -1,13 +1,5 @@
 {
   "name": "Stranded",
-  "world": {
-    "bounds": {
-        "x": 0,
-        "y": 0,
-        "width": 5000,
-        "height": 5000
-    }
-  },
   "resources": [
     {
       "type": "iron",
@@ -18,5 +10,18 @@
   "shuttle": {
     "x": 2500,
     "y": 2500
+  },
+  "world": {
+    "bounds": {
+      "height": 5000,
+      "width": 5000,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "allowedConstruction": {
+    "build": [
+      "forkLift"
+    ]
   }
 }

@@ -6,10 +6,15 @@ container.levels = [
 	require('../levels/0001.json')
 ];
 
+// Construction
+container.forkLift = require('../construction/forkLift');
+
 // State: Map
 container.mapState = require('../game/states/mapState');
 container.mapStates = [
-	require('../shuttle'),
+	require('../hud/construction'),
 	require('../camera'),
+	require('../shuttle'),
+	require('../construction/forkLift'),
 	require('../resources/iron')
 ];

@@ -4,12 +4,6 @@ const ioc = require('../../ioc');
 class MapState {
 
 	preload() {
-		ioc.game.load.spritesheet(
-			'icon-build',
-			'assets/icons/build.png',
-			100,
-			100,
-			4);
 
 
 		// camera.preload();
@@ -46,21 +40,6 @@ class MapState {
 		// shuttle.create(level);
 
 		ioc.mapStates.forEach(state => state.create(level));
-
-		// build button
-		const click = () => {
-			console.log('clicked');
-		};
-		const btnBuild = ioc.game.add.button(
-			10,
-			10,
-			'icon-build',
-			click,
-			null,
-			0, 1, 2, 3
-		);
-		btnBuild.scale.setTo(0.5, 0.5);
-		btnBuild.fixedToCamera = true;
 	}
 
 	update() {
@@ -75,4 +54,3 @@ class MapState {
 
 module.exports = new MapState();
 module.exports.MapState = MapState;
-ioc.mapState = module.exports;
