@@ -1,8 +1,9 @@
 
+const ioc = require('../ioc');
+
 class Camera {
 
 	constructor(game) {
-		this.game = game;
 		this.isDragging = false;
 		this.dragFromX = null;
 		this.dragFromY = null;
@@ -12,15 +13,15 @@ class Camera {
 	}
 
 	create() {
-		this.game.camera.x = this.game.world.centerX - this.game.width/2;
-		this.game.camera.y = this.game.world.centerY - this.game.height/2;
-		this.game.input.mouse.capture = true;
+		ioc.game.camera.x = ioc.game.world.centerX - ioc.game.width/2;
+		ioc.game.camera.y = ioc.game.world.centerY - ioc.game.height/2;
+		ioc.game.input.mouse.capture = true;
 	}
 
 	update() {
-		const mouseX = this.game.input.activePointer.x;
-		const mouseY = this.game.input.activePointer.y;
-		if (this.game.input.activePointer.leftButton.isDown) {
+		const mouseX = ioc.game.input.activePointer.x;
+		const mouseY = ioc.game.input.activePointer.y;
+		if (ioc.game.input.activePointer.leftButton.isDown) {
 			if (!this.isDragging) {
 				// console.log(`Start dragging: (${mouseX}, ${mouseY})`);
 				this.isDragging = true;
@@ -29,8 +30,8 @@ class Camera {
 			} else {
 				const diffX = this.dragFromX - mouseX;
 				const diffY = this.dragFromY - mouseY;
-				this.game.camera.x += diffX;
-				this.game.camera.y += diffY;
+				ioc.game.camera.x += diffX;
+				ioc.game.camera.y += diffY;
 				this.dragFromX = mouseX;
 				this.dragFromY = mouseY;
 			}
@@ -44,4 +45,5 @@ class Camera {
 
 }
 
-module.exports = Camera;
+module.exports = new Camera();
+module.exports.Camera = Camera;

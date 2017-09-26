@@ -17,18 +17,18 @@ class MapState {
 
 	create() {
 		const level = ioc.levels[0];
-		// game.world.setBounds(
-		// 	level.world.bounds.x,
-		// 	level.world.bounds.y,
-		// 	level.world.bounds.width,
-		// 	level.world.bounds.height
-		// );
+		ioc.game.world.setBounds(
+			level.world.bounds.x,
+			level.world.bounds.y,
+			level.world.bounds.width,
+			level.world.bounds.height
+		);
 
 		this.background = ioc.game.add.tileSprite(
 			0,
 			0,
-			window.innerWidth,
-			window.innerHeight,
+			level.world.bounds.width,
+			level.world.bounds.height,
 			'background'
 		);
 
@@ -41,6 +41,7 @@ class MapState {
 	}
 
 	update() {
+		ioc.mapStates.forEach(state => state.update());
 		// camera.update();
 		// construction.update();
 		// resources.update();
