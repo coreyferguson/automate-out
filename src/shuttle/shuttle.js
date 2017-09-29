@@ -8,6 +8,8 @@ class Shuttle {
 			energy: 100,
 			iron: 0
 		};
+		this.x = null;
+		this.y = null;
 	}
 
 	preload() {
@@ -15,7 +17,9 @@ class Shuttle {
 	}
 
 	create(level) {
-		this.shuttle = ioc.game.add.sprite(level.shuttle.x, level.shuttle.y, 'shuttle');
+		this.x = level.shuttle.x;
+		this.y = level.shuttle.y;
+		this.shuttle = ioc.game.add.sprite(this.x, this.y, 'shuttle');
 		this.shuttle.anchor.setTo(0.5, 0.5);
 		this.shuttle.angle = 0;
 	}

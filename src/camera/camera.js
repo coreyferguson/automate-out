@@ -23,7 +23,6 @@ class Camera {
 		const mouseY = ioc.game.input.activePointer.y;
 		if (ioc.game.input.activePointer.leftButton.isDown) {
 			if (!this.isDragging) {
-				// console.log(`Start dragging: (${mouseX}, ${mouseY})`);
 				this.isDragging = true;
 				this.dragFromX = mouseX;
 				this.dragFromY = mouseY;
@@ -37,7 +36,6 @@ class Camera {
 			}
 		} else {
 			if (this.isDragging) {
-				// console.log(`Stopped dragging: (${mouseX}, ${mouseY})`);
 				this.isDragging = false;
 			}
 		}

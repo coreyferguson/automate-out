@@ -18,6 +18,7 @@ class MapState {
 	}
 
 	create() {
+    ioc.game.physics.startSystem(Phaser.Physics.ARCADE);
 		const level = ioc.levels[0];
 		ioc.game.world.setBounds(
 			level.world.bounds.x,
