@@ -20,7 +20,7 @@ container.mapState = require('../game/states/mapState');
 container.mapStates = [
 	require('../hud/construction'),
 	require('../camera'),
-	require('../shuttle'),
+	require('../home'),
 	require('../construction/forkLift'),
 	require('../resources/iron')
 ];

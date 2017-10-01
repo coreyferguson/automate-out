@@ -4,14 +4,7 @@ const ioc = require('../../ioc');
 class MapState {
 
 	preload() {
-
-
-		// camera.preload();
-		// construction.preload();
-		// resources.preload();
-		// shuttle.preload();
 		ioc.game.load.image('background', 'assets/images/background.png');
-
 		ioc.mapStates.forEach(state => {
 			state.preload();
 		});
@@ -26,7 +19,6 @@ class MapState {
 			level.world.bounds.width,
 			level.world.bounds.height
 		);
-
 		this.background = ioc.game.add.tileSprite(
 			0,
 			0,
@@ -34,21 +26,11 @@ class MapState {
 			level.world.bounds.height,
 			'background'
 		);
-
-		// camera.create(level);
-		// construction.create(level);
-		// resources.create(level);
-		// shuttle.create(level);
-
 		ioc.mapStates.forEach(state => state.create(level));
 	}
 
 	update() {
 		ioc.mapStates.forEach(state => state.update());
-		// camera.update();
-		// construction.update();
-		// resources.update();
-		// shuttle.update();
 	}
 
 }
