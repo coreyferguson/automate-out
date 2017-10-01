@@ -11,11 +11,13 @@ class Miner {
     this.miners = [];
     this.massConsumptionPerSecond = 1;
     this.massCapacity = 5;
+    this.maxIronProgressBarWidth=30;
   }
 
   update() {
     if (ioc.minerUserImpl.getVector && this.miners.length > 0) {
       this.miners.forEach(miner => {
+        // get vector from user
         const resources = ioc.state.resources;
         const game = {
           space: { resources },
@@ -26,6 +28,8 @@ class Miner {
         miner.sprite.angle = vector.direction;
         miner.sprite.body.velocity.x = 0;
         miner.sprite.body.velocity.y = 0;
+
+        // update miner based on user supplied vector
         if (vector) {
           if (vector.magnitude > 100) vector.magnitude = 100;
           if (vector.magnitude < 0) vector.magnitude = 0;
@@ -35,6 +39,13 @@ class Miner {
           }
         }
 
+        // iron progress bar
+        miner.ironProgressBar.x = miner.sprite.x-miner.sprite.width/2;
+        miner.ironProgressBar.y = miner.sprite.y-miner.sprite.height/2-10;
+        miner.ironProgressBar.width=
+          miner.resources.iron
+          * this.maxIronProgressBarWidth
+          / this.massCapacity;
       });
     }
   }
@@ -52,6 +63,15 @@ class Miner {
         iron: 0
       }
     };
+
+    // iron progress bar
+    const ironProgressBar = ioc.game.add.image(
+      sprite.x,
+      sprite.y,
+      'progress-bar'
+    );
+    ironProgressBar.width = 0;
+    miner.ironProgressBar = ironProgressBar;
 
     // check for collisions
     ioc.game.time.events.loop(
