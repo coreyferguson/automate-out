@@ -47,6 +47,11 @@ class Miner {
     });
   }
 
+  notifyStateChange() {
+    // TODO: add collision detection between miners and resources
+    // TODO: collect resources while overlapping
+  }
+
 }
 
 module.exports = new Miner();
