@@ -3,15 +3,12 @@ const ioc = require('../ioc');
 
 class Iron {
 
-  constructor() {
-    this.sprites = [];
-  }
-
   preload() {
     ioc.game.load.image('iron', 'assets/images/iron-ingot.png');
   }
 
   create(level) {
+    this.sprites = [];
     const irons = level.resources.filter(item => item.type === 'iron');
     irons.forEach(iron => {
       let sprite = ioc.game.add.sprite(iron.x, iron.y, 'iron');
