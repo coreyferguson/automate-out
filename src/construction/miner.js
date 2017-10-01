@@ -23,6 +23,7 @@ class Miner {
           math: ioc.game.math
         };
         const vector = ioc.minerUserImpl.getVector(game, sprite);
+        sprite.angle = vector.direction;
         sprite.body.velocity.x = 0;
         sprite.body.velocity.y = 0;
         if (vector) {
@@ -43,7 +44,7 @@ class Miner {
       ioc.game.world.centerY,
       'miner'
     );
-    sprite.scale.setTo(0.25, 0.25);
+    sprite.scale.setTo(0.5, 0.5);
     sprite.anchor.setTo(0.5, 0.5);
     ioc.game.physics.enable(sprite, Phaser.Physics.ARCADE);
     this.sprites.push(sprite);
