@@ -5,7 +5,7 @@ class MinerFirstImpl {
     const { math, physics, space } = game;
     const { resources } = space;
     if (resources && resources[0]) {
-      const resource = resources[0];
+      const resource = resources[0].sprite;
       const radians = physics.arcade.angleToXY(miner, resource.x, resource.y);
       const distance = physics.arcade.distanceToXY(miner, resource.x, resource.y);
       if (distance > 10) {

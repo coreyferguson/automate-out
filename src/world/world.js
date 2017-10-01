@@ -1,6 +1,7 @@
 
 const ioc = require('../ioc');
 const miner = require('../ships/miner');
+const iron = require('../resources/iron');
 
 class World {
 
@@ -15,21 +16,14 @@ class World {
       home: {
         x: 2500,
         y: 2500
-      },
-      resources: [
-        {
-          type: 'iron',
-          x: 2150,
-          y: 2500
-        }
-      ]
+      }
     };
-    this.time = 0;
     this.timeline = [
       {
-        duration: 5,
+        duration: 10,
         create: () => {
           miner.spawn(2550, 2550)
+          iron.spawn(2150, 2500, 100);
         }
       }
     ];

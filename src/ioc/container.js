@@ -14,6 +14,7 @@ container.miner = require('../ships/miner');
 container.minerUserImpl = require('../user/minerCoreyImpl');
 
 // State: Map
+container.state = {};
 container.mapState = require('../game/states/mapState');
 container.mapStates = [
   require('../camera'),

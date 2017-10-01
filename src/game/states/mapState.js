@@ -27,14 +27,14 @@ class MapState {
     );
     ioc.mapStates.forEach(state => state.create());
 
-    let timeIndex = 0;
+    ioc.state.timeIndex = 0;
     function play() {
-      const time = ioc.world.timeline[timeIndex];
+      const time = ioc.world.timeline[ioc.state.timeIndex];
       if (time) {
-        console.log('level: ' + (timeIndex+1));
+        console.log('level: ' + (ioc.state.timeIndex+1));
         const duration = Phaser.Timer.SECOND * time.duration;
         ioc.game.time.events.add(duration, () => {
-          timeIndex++;
+          ioc.state.timeIndex++;
           play();
         });
         time.create();

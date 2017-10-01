@@ -14,9 +14,7 @@ class Miner {
   update() {
     if (ioc.minerUserImpl.getVector && this.sprites.length > 0) {
       this.sprites.forEach(sprite => {
-        const resources = ioc.resources.reduce((resources, resource) => {
-          return resources.concat(resource.sprites);
-        }, []);
+        const resources = ioc.state.resources;
         const game = {
           space: { resources },
           physics: ioc.game.physics,
