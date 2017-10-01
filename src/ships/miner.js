@@ -10,7 +10,6 @@ class Miner {
   create() {
     this.miners = [];
     this.massConsumptionPerSecond = 1;
-    this.massCapacity = 5;
     this.maxIronProgressBarWidth=30;
   }
 
@@ -19,12 +18,14 @@ class Miner {
       this.miners.forEach(miner => {
         // get vector from user
         const resources = ioc.state.resources;
+        const home = ioc.state.home;
         const game = {
-          space: { resources },
+          space: { resources, home },
           physics: ioc.game.physics,
           math: ioc.game.math
         };
-        const vector = ioc.minerUserImpl.getVector(game, miner);
+        const vector = ioc.minerUserImpl.getVector(game, miner)
+          || { direction: 0, magnitude: 0 };
         miner.sprite.angle = vector.direction;
         miner.sprite.body.velocity.x = 0;
         miner.sprite.body.velocity.y = 0;
@@ -45,7 +46,7 @@ class Miner {
         miner.ironProgressBar.width=
           miner.resources.iron
           * this.maxIronProgressBarWidth
-          / this.massCapacity;
+          / miner.massCapacity;
       });
     }
   }
@@ -61,7 +62,8 @@ class Miner {
       sprite,
       resources: {
         iron: 0
-      }
+      },
+      massCapacity: 5
     };
 
     // iron progress bar
@@ -77,17 +79,25 @@ class Miner {
     ioc.game.time.events.loop(
       Phaser.Timer.SECOND,
       () => {
-        if (miner.resources.iron < this.massCapacity) {
+        // pull iron from nearby resources
+        if (miner.resources.iron < miner.massCapacity) {
           ioc.state.resources.forEach(resource => {
             if (Phaser.Rectangle.intersects(miner.sprite, resource.sprite)) {
               const type = resource.type;
               miner.resources[type] = miner.resources[type] || 0;
               miner.resources[type] += this.massConsumptionPerSecond;
               resource.mass -= this.massConsumptionPerSecond;
-              console.log('miner.resources.iron:', miner.resources.iron);
-              console.log('resource.mass:', resource.mass);
             }
           });
+        }
+        // offload iron to home
+        if (miner.resources.iron > 0) {
+          const home = ioc.state.home;
+          if (Phaser.Rectangle.intersects(miner.sprite, home.sprite)) {
+            home.resources.iron = home.resources.iron || 0;
+            home.resources.iron += this.massConsumptionPerSecond;
+            miner.resources.iron -= this.massConsumptionPerSecond;
+          }
         }
       }
     );

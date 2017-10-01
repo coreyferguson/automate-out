@@ -2,6 +2,14 @@
 class MinerFirstImpl {
 
   getVector(game, miner) {
+    if (miner.resources.iron === 0) {
+      return this.getVectorToIron(game, miner);
+    } else if (miner.resources.iron === miner.massCapacity) {
+      return this.getVectorToHome(game, miner);
+    }
+  }
+
+  getVectorToIron(game, miner) {
     const { math, physics, space } = game;
     const { resources } = space;
     if (resources && resources[0]) {
@@ -21,6 +29,26 @@ class MinerFirstImpl {
       }
     } else {
       return null;
+    }
+  }
+
+  getVectorToHome(game, miner) {
+    const physics = game.physics;
+    const math = game.math;
+    const home = game.space.home;
+    const radians = physics.arcade.angleBetween(miner.sprite, home.sprite);
+    const degrees = math.radToDeg(radians);
+    const distance = physics.arcade.distanceBetween(miner.sprite, home.sprite);
+    if (distance > 10) {
+      return {
+        direction: degrees,
+        magnitude: 100
+      };
+    } else {
+      return {
+        direction: 0,
+        magnitude: 0
+      }
     }
   }
 }

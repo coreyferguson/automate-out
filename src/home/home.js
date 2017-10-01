@@ -16,7 +16,10 @@ class Home {
 		const sprite = ioc.game.add.sprite(x, y, 'home');
 		sprite.anchor.setTo(0.5, 0.5);
 		sprite.angle = 0;
-		ioc.state.home = { sprite };
+		ioc.state.home = {
+			sprite,
+			resources: []
+		};
 	}
 
 	update() {
