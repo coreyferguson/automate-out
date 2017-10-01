@@ -14,7 +14,7 @@ module.exports = {
       y: 2500
     }
   ],
-  shuttle: {
+  home: {
     x: 2500,
     y: 2500
   },
