@@ -17,9 +17,6 @@ container.resources = [
 container.miner = require('../construction/miner');
 container.minerUserImpl = require('../user/minerCoreyImpl');
 
-// State: Level Announcement
-container.levelTitleState = require('../game/states/levelTitleState');
-
 // State: Map
 container.mapState = require('../game/states/mapState');
 container.mapStates = [

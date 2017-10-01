@@ -35,8 +35,6 @@ class MapState {
     ioc.mapStates.forEach(state => state.update());
     if (ioc.levels[ioc.level].success()) {
       console.log('success');
-      ioc.level++;
-      ioc.game.state.start('levelTitleState', true);
     }
   }
 
