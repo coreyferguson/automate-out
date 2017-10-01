@@ -18,8 +18,9 @@ class Iron {
     sprite.anchor.setTo(0.5, 0.5);
     ioc.state.resources = ioc.state.resources || [];
     ioc.state.resources.push({
-      sprite
-    })
+      sprite,
+      mass
+    });
   }
 
 }

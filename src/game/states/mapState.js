@@ -38,6 +38,9 @@ class MapState {
           play();
         });
         time.create();
+        ioc.mapStates.forEach(state => {
+          if (state.notifyStateChange) state.notifyStateChange();
+        });
       } else {
         console.log('fin');
       }
