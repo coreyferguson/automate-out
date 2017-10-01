@@ -20,9 +20,9 @@ class World {
     };
     this.timeline = [
       {
-        duration: 10,
+        duration: 5,
         create: () => {
-          miner.spawn(2550, 2550)
+          miner.spawn(2550, 2550);
           iron.spawn(2150, 2500, 100);
         }
       }
