@@ -3,27 +3,32 @@ const ioc = require('../ioc');
 const miner = require('../ships/miner');
 const iron = require('../resources/iron');
 
+const width = 5000;
+const height = 5000;
+const worldMiddleX = width/2;
+const worldMiddleY = height/2;
+
 class World {
 
   constructor() {
     this.init = {
       bounds: {
-        height: 5000,
-        width: 5000,
+        width,
+        height,
         x: 0,
         y: 0
       },
       home: {
-        x: 2500,
-        y: 2500
+        x: worldMiddleX,
+        y: worldMiddleY
       }
     };
     this.timeline = [
       {
         duration: 5,
         create: () => {
-          miner.spawn(2550, 2550);
-          iron.spawn(2150, 2500, 100);
+          miner.spawn(2450, 2400);
+          iron.spawn(2200, worldMiddleY, 100);
         }
       }
     ];
