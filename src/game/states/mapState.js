@@ -12,30 +12,41 @@ class MapState {
 
   create() {
     ioc.game.physics.startSystem(Phaser.Physics.ARCADE);
-    const level = ioc.levels[ioc.level];
     ioc.game.world.setBounds(
-      level.world.bounds.x,
-      level.world.bounds.y,
-      level.world.bounds.width,
-      level.world.bounds.height
+      ioc.world.init.bounds.x,
+      ioc.world.init.bounds.y,
+      ioc.world.init.bounds.width,
+      ioc.world.init.bounds.height
     );
-
     this.background = ioc.game.add.tileSprite(
       0,
       0,
-      level.world.bounds.width,
-      level.world.bounds.height,
+      ioc.world.init.bounds.width,
+      ioc.world.init.bounds.height,
       'background'
     );
+    ioc.mapStates.forEach(state => state.create());
 
-    ioc.mapStates.forEach(state => state.create(level));
+    let timeIndex = 0;
+    function play() {
+      const time = ioc.world.timeline[timeIndex];
+      if (time) {
+        console.log('level: ' + (timeIndex+1));
+        const duration = Phaser.Timer.SECOND * time.duration;
+        ioc.game.time.events.add(duration, () => {
+          timeIndex++;
+          play();
+        });
+        time.create();
+      } else {
+        console.log('fin');
+      }
+    }
+    play();
   }
 
   update() {
     ioc.mapStates.forEach(state => state.update());
-    if (ioc.levels[ioc.level].success()) {
-      console.log('success');
-    }
   }
 
 }

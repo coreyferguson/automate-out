@@ -16,15 +16,15 @@ class Home {
 		ioc.game.load.image('home', 'assets/ships/home_100x100.png');
 	}
 
-	create(level) {
-		this.x = level.home.x;
-		this.y = level.home.y;
+	create() {
+		this.x = ioc.world.init.home.x;
+		this.y = ioc.world.init.home.y;
 		this.home = ioc.game.add.sprite(this.x, this.y, 'home');
 		this.home.anchor.setTo(0.5, 0.5);
 		this.home.angle = 0;
 	}
 
-	update(level) {
+	update() {
 	}
 
 }

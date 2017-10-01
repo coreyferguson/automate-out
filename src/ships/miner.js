@@ -38,10 +38,10 @@ class Miner {
     }
   }
 
-  spawn() {
+  spawn(x, y) {
     let sprite = ioc.game.add.sprite(
-      ioc.game.world.centerX,
-      ioc.game.world.centerY,
+      x,
+      y,
       'miner'
     );
     sprite.scale.setTo(0.5, 0.5);
