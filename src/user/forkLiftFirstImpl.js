@@ -1,9 +1,10 @@
 
-class ForkLiftFirstImpl {
+class MinerFirstImpl {
 
   getVector(game, sprite) {
     const { math, physics, space } = game;
     const { resources } = space;
+    const
     return {
       direction: 0, // angle, in degrees, to aim your saucer
       magnitude: 0 // speed, >=0, <=100
@@ -12,5 +13,5 @@ class ForkLiftFirstImpl {
 
 }
 
-module.exports = new ForkLiftFirstImpl();
-module.exports.ForkLiftFirstImpl = ForkLiftFirstImpl;
+module.exports = new MinerFirstImpl();
+module.exports.MinerFirstImpl = MinerFirstImpl;

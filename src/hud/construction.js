@@ -5,7 +5,7 @@ class ConstructionHud {
 
 	constructor() {
 		this.menuActions = {
-			forkLift: this.forkLift.bind(this)
+			miner: this.miner.bind(this)
 		};
 	}
 
@@ -17,8 +17,8 @@ class ConstructionHud {
 			100,
 			4);
 		ioc.game.load.spritesheet(
-			'icon-forkLift',
-			'assets/icons/forkLift.png',
+			'icon-miner',
+			'assets/icons/miner.png',
 			100,
 			100,
 			4);
@@ -71,8 +71,8 @@ class ConstructionHud {
 		});
 	}
 
-	forkLift() {
-		ioc.forkLift.spawn();
+	miner() {
+		ioc.miner.spawn();
 		this.showMainMenus();
 	}
 

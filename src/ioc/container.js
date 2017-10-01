@@ -12,8 +12,8 @@ container.resources = [
 ];
 
 // Construction
-container.forkLift = require('../construction/forkLift');
-container.forkLiftUserImpl = require('../user/forkLiftFirstImpl');
+container.miner = require('../construction/miner');
+container.minerUserImpl = require('../user/minerFirstImpl');
 
 // State: Map
 container.mapState = require('../game/states/mapState');
@@ -21,6 +21,6 @@ container.mapStates = [
 	require('../hud/construction'),
 	require('../camera'),
 	require('../home'),
-	require('../construction/forkLift'),
+	require('../construction/miner'),
 	require('../resources/iron')
 ];

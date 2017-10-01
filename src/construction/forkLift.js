@@ -1,21 +1,21 @@
 
 const ioc = require('../ioc');
 
-class ForkLift {
+class Miner {
 
   constructor() {
     this.sprites = [];
   }
 
   preload() {
-    ioc.game.load.image('forkLift', 'assets/images/forkLift.png');
+    ioc.game.load.image('miner', 'assets/ships/miner_60x100.png');
   }
 
   create() {
   }
 
   update() {
-    if (ioc.forkLiftUserImpl.getVector && this.sprites.length > 0) {
+    if (ioc.minerUserImpl.getVector && this.sprites.length > 0) {
       this.sprites.forEach(sprite => {
         let resources = [];
         ioc.resources.forEach(resource => {
@@ -26,7 +26,7 @@ class ForkLift {
         	physics: ioc.game.physics,
         	math: ioc.game.math
         };
-        const vector = ioc.forkLiftUserImpl.getVector(game, sprite);
+        const vector = ioc.minerUserImpl.getVector(game, sprite);
         sprite.body.velocity.x = 0;
 		    sprite.body.velocity.y = 0;
         if (vector) {
@@ -45,8 +45,9 @@ class ForkLift {
     let sprite = ioc.game.add.sprite(
       ioc.game.world.centerX,
       ioc.game.world.centerY,
-      'forkLift'
+      'miner'
     );
+    sprite.scale.setTo(0.25, 0.25);
     sprite.anchor.setTo(0.5, 0.5);
 		ioc.game.physics.enable(sprite, Phaser.Physics.ARCADE);
     this.sprites.push(sprite);
@@ -54,5 +55,5 @@ class ForkLift {
 
 }
 
-module.exports = new ForkLift();
-module.exports.ForkLift = ForkLift;
+module.exports = new Miner();
+module.exports.Miner = Miner;

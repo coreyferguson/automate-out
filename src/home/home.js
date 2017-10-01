@@ -13,7 +13,7 @@ class Home {
 	}
 
 	preload() {
-		ioc.game.load.image('home', 'assets/ships/home_100.png');
+		ioc.game.load.image('home', 'assets/ships/home_100x100.png');
 	}
 
 	create(level) {
