@@ -9,6 +9,8 @@ class Miner {
 
   create() {
     this.miners = [];
+    this.massConsumptionPerSecond = 1;
+    this.massCapacity = 5;
   }
 
   update() {
@@ -32,24 +34,46 @@ class Miner {
               vector.direction, vector.magnitude, miner.sprite.body.velocity);
           }
         }
+
       });
     }
   }
 
   spawn(x, y) {
+    // create miner
     let sprite = ioc.game.add.sprite(x, y, 'miner');
     sprite.scale.setTo(0.5, 0.5);
     sprite.anchor.setTo(0.5, 0.5);
+    sprite.enableBody = true;
     ioc.game.physics.enable(sprite, Phaser.Physics.ARCADE);
-    this.miners.push({
+    const miner = {
       sprite,
-      iron: 0
-    });
-  }
+      resources: {
+        iron: 0
+      }
+    };
 
-  notifyStateChange() {
-    // TODO: add collision detection between miners and resources
-    // TODO: collect resources while overlapping
+    // check for collisions
+    ioc.game.time.events.loop(
+      Phaser.Timer.SECOND,
+      () => {
+        if (miner.resources.iron < this.massCapacity) {
+          ioc.state.resources.forEach(resource => {
+            if (Phaser.Rectangle.intersects(miner.sprite, resource.sprite)) {
+              const type = resource.type;
+              miner.resources[type] = miner.resources[type] || 0;
+              miner.resources[type] += this.massConsumptionPerSecond;
+              resource.mass -= this.massConsumptionPerSecond;
+              console.log('miner.resources.iron:', miner.resources.iron);
+              console.log('resource.mass:', resource.mass);
+            }
+          });
+        }
+      }
+    );
+
+    // global reference to all miners
+    this.miners.push(miner);
   }
 
 }

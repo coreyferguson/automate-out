@@ -16,10 +16,12 @@ class Iron {
   spawn(x, y, mass) {
     const sprite = ioc.game.add.sprite(x, y, 'iron');
     sprite.anchor.setTo(0.5, 0.5);
+    sprite.enableBody = true;
     ioc.state.resources = ioc.state.resources || [];
     ioc.state.resources.push({
+      mass,
       sprite,
-      mass
+      type: 'iron'
     });
   }
 
