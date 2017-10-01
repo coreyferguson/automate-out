@@ -19,6 +19,6 @@ container.mapState = require('../game/states/mapState');
 container.mapStates = [
   require('../camera'),
   require('../home'),
-  require('../ships/miner'),
-  require('../resources/iron')
+  require('../resources/iron'),
+  require('../ships/miner')
 ];

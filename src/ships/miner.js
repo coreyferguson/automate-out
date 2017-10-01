@@ -68,7 +68,7 @@ class Miner {
     const ironProgressBar = ioc.game.add.image(
       sprite.x,
       sprite.y,
-      'progress-bar'
+      'progress-bar-friendly'
     );
     ironProgressBar.width = 0;
     miner.ironProgressBar = ironProgressBar;

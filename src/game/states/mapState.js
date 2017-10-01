@@ -5,7 +5,8 @@ class MapState {
 
   preload() {
     ioc.game.load.image('background', 'assets/images/background.png');
-    ioc.game.load.image('progress-bar', 'assets/images/progress-bar.png');
+    ioc.game.load.image('progress-bar-friendly', 'assets/images/progress-bar-friendly.png');
+    ioc.game.load.image('progress-bar-neutral', 'assets/images/progress-bar-neutral.png');
     ioc.mapStates.forEach(state => {
       state.preload();
     });
