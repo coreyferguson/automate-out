@@ -4,18 +4,18 @@ const ioc = require('../ioc');
 class Iron {
 
   preload() {
-    ioc.game.load.image('iron', 'assets/images/iron-ingot.png');
+    ioc.game.load.image('iron', 'assets/images/iron_50x50.png');
   }
 
   create() {
-    this.maxMassProgressBarWidth = 60;
+    this.maxMassProgressBarWidth = 50;
   }
 
   update() {
     ioc.state.resources.forEach(resource => {
       // mass progress bar
       resource.massProgressBar.x = resource.sprite.x-resource.sprite.width/2;
-      resource.massProgressBar.y = resource.sprite.y-resource.sprite.height/2-10;
+      resource.massProgressBar.y = resource.sprite.y-resource.sprite.height/2-20;
       resource.massProgressBar.width=
         resource.mass
         * this.maxMassProgressBarWidth
@@ -27,7 +27,6 @@ class Iron {
     // create resource
     const sprite = ioc.game.add.sprite(x, y, 'iron');
     sprite.anchor.setTo(0.5, 0.5);
-    sprite.enableBody = true;
     ioc.state.resources = ioc.state.resources || [];
     const resource = {
       mass,
