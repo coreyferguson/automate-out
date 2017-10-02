@@ -20,14 +20,16 @@ class World {
       },
       home: {
         x: worldMiddleX,
-        y: worldMiddleY
+        y: worldMiddleY,
+        resources: {
+          iron: 5
+        }
       }
     };
     this.timeline = [
       {
-        duration: 5,
+        duration: 10,
         create: () => {
-          miner.spawn(2450, 2400);
           iron.spawn(2200, worldMiddleY, 100);
         }
       }

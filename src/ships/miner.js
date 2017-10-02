@@ -11,6 +11,9 @@ class Miner {
     this.miners = [];
     this.massConsumptionPerSecond = 1;
     this.maxIronProgressBarWidth=30;
+    this.type = 'miner';
+    this.cost = 5;
+    this.buildTimeInSeconds = 1;
   }
 
   update() {

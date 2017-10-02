@@ -1,5 +1,6 @@
 
 const ioc = require('../../ioc');
+const miner = require('../../ships/miner');
 
 class MapState {
 
@@ -49,6 +50,20 @@ class MapState {
 
   update() {
     ioc.mapStates.forEach(state => state.update());
+
+    // build from user queue
+    let couldBuild = true;
+    while (couldBuild) {
+      let buildItem = ioc.buildQueueUserImpl[0];
+      if (buildItem) {
+        couldBuild = ioc.state.home.construct(buildItem);
+        if (couldBuild) {
+          ioc.buildQueueUserImpl.shift();
+        }
+      } else {
+        couldBuild = false;
+      }
+    }
   }
 
 }
