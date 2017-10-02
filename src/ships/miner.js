@@ -83,10 +83,12 @@ class Miner {
         if (miner.resources.iron < miner.massCapacity) {
           ioc.state.resources.forEach(resource => {
             if (Phaser.Rectangle.intersects(miner.sprite, resource.sprite)) {
-              const type = resource.type;
-              miner.resources[type] = miner.resources[type] || 0;
-              miner.resources[type] += this.massConsumptionPerSecond;
-              resource.mass -= this.massConsumptionPerSecond;
+              if (resource.mass > 0) {
+                const type = resource.type;
+                miner.resources[type] = miner.resources[type] || 0;
+                miner.resources[type] += this.massConsumptionPerSecond;
+                resource.mass -= this.massConsumptionPerSecond;
+              }
             }
           });
         }
