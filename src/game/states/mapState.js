@@ -9,7 +9,7 @@ class MapState {
     ioc.game.load.image('progress-bar-friendly', 'assets/images/progress-bar-friendly.png');
     ioc.game.load.image('progress-bar-neutral', 'assets/images/progress-bar-neutral.png');
     ioc.mapStates.forEach(state => {
-      state.preload();
+      if (state.preload) state.preload();
     });
   }
 
@@ -28,7 +28,9 @@ class MapState {
       ioc.world.init.bounds.height,
       'background'
     );
-    ioc.mapStates.forEach(state => state.create());
+    ioc.mapStates.forEach(state => {
+      if (state.create) state.create();
+    });
 
     ioc.state.timeIndex = 0;
     function play() {
@@ -49,7 +51,9 @@ class MapState {
   }
 
   update() {
-    ioc.mapStates.forEach(state => state.update());
+    ioc.mapStates.forEach(state => {
+      if (state.update) state.update();
+    });
 
     // build from user queue
     let couldBuild = true;

@@ -29,5 +29,6 @@ container.mapStates = [
   require('../camera'),
   require('../home'),
   require('../resources/iron'),
-  require('../ships/miner')
+  require('../ships/miner'),
+  require('../hud/hud')
 ];
