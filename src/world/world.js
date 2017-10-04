@@ -1,7 +1,14 @@
 
 const ioc = require('../ioc');
+
+// friendlies
 const miner = require('../ships/miner');
+
+// neutral
 const iron = require('../resources/iron');
+
+// enemies
+const scoutService = require('../enemies/scoutService');
 
 const width = 5000;
 const height = 5000;
@@ -31,6 +38,7 @@ class World {
         duration: 10,
         create: () => {
           iron.spawn(2200, worldMiddleY, 100);
+          scoutService.spawn(1000, 1000);
         }
       }
     ];

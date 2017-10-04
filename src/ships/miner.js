@@ -9,6 +9,7 @@ class Miner {
 
   create() {
     this.miners = [];
+    ioc.state.miners = this.miners;
     this.massConsumptionPerSecond = 1;
     this.maxIronProgressBarWidth=30;
     this.type = 'miner';
@@ -47,9 +48,9 @@ class Miner {
         miner.ironProgressBar.x = miner.sprite.x-miner.sprite.width/2;
         miner.ironProgressBar.y = miner.sprite.y-miner.sprite.height/2-10;
         miner.ironProgressBar.width =
-          miner.resources.iron
-          * this.maxIronProgressBarWidth
-          / miner.massCapacity;
+          miner.resources.iron *
+          this.maxIronProgressBarWidth /
+          miner.massCapacity;
       });
     }
   }
@@ -75,7 +76,6 @@ class Miner {
       sprite.y,
       'progress-bar-friendly'
     );
-    ironProgressBar.width = 0;
     miner.ironProgressBar = ironProgressBar;
 
     // check for collisions

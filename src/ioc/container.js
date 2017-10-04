@@ -19,9 +19,6 @@ container.resources = [
   require('../resources/iron')
 ];
 
-// Ships
-container.miner = require('../ships/miner');
-
 // State: Map
 container.state = {};
 container.mapState = require('../game/states/mapState');
@@ -30,5 +27,7 @@ container.mapStates = [
   require('../home'),
   require('../resources/iron'),
   require('../ships/miner'),
+  require('../enemies/scoutGameState'),
+  require('../ships/scout'),
   require('../hud/hud')
 ];
