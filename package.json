@@ -4,6 +4,7 @@
   "description": "Automate your way out of space with robot helpers.",
   "main": "index.js",
   "scripts": {
+    "eslint": "./node_modules/.bin/eslint src",
     "start": "node_modules/.bin/webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +22,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2"
   }

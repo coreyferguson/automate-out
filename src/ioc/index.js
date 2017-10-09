@@ -1,2 +1,2 @@
 
-module.exports = require('./ioc');
+module.exports = require('./container');

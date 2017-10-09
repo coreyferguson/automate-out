@@ -1,24 +1,22 @@
 
-class MinerFirstImpl {
+class MinerCoreyImpl {
 
-  getVector(game, miner) {
+  getVector(miner, state, phaser) {
     if (miner.resources.iron === 0) {
-      return this.getVectorToIron(game, miner);
+      return this.getVectorToIron(miner, state, phaser);
     } else if (miner.resources.iron === miner.massCapacity) {
-      return this.getVectorToHome(game, miner);
+      return this.getVectorToHome(miner, state, phaser);
     }
   }
 
-  getVectorToIron(game, miner) {
-    const { math, physics, space } = game;
-    const { resources } = space;
-    if (resources && resources[0]) {
-      const resource = resources[0].sprite;
-      const radians = physics.arcade.angleToXY(miner.sprite, resource.x, resource.y);
-      const distance = physics.arcade.distanceToXY(miner.sprite, resource.x, resource.y);
+  getVectorToIron(miner, state, phaser) {
+    if (state.irons && state.irons[0]) {
+      const iron = state.irons[0];
+      const radians = phaser.physics.arcade.angleToXY(miner, iron.x, iron.y);
+      const distance = phaser.physics.arcade.distanceToXY(miner, iron.x, iron.y);
       if (distance > 10) {
         return {
-          direction: math.radToDeg(radians),
+          direction: phaser.math.radToDeg(radians),
           magnitude: 100
         };
       } else {
@@ -32,13 +30,10 @@ class MinerFirstImpl {
     }
   }
 
-  getVectorToHome(game, miner) {
-    const physics = game.physics;
-    const math = game.math;
-    const home = game.space.home;
-    const radians = physics.arcade.angleBetween(miner.sprite, home.sprite);
-    const degrees = math.radToDeg(radians);
-    const distance = physics.arcade.distanceBetween(miner.sprite, home.sprite);
+  getVectorToHome(miner, state, phaser) {
+    const radians = phaser.physics.arcade.angleBetween(miner, state.home);
+    const degrees = phaser.math.radToDeg(radians);
+    const distance = phaser.physics.arcade.distanceBetween(miner, state.home);
     if (distance > 10) {
       return {
         direction: degrees,
@@ -48,12 +43,12 @@ class MinerFirstImpl {
       return {
         direction: 0,
         magnitude: 0
-      }
+      };
     }
   }
 }
 
-module.exports = new MinerFirstImpl();
-module.exports.MinerFirstImpl = MinerFirstImpl;
+module.exports = new MinerCoreyImpl();
+module.exports.MinerCoreyImpl = MinerCoreyImpl;
 
 
