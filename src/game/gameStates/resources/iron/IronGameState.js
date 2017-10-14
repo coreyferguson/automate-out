@@ -13,7 +13,6 @@ class IronGameState {
   }
 
   update() {
-    ioc.ironService.updateProgressBars();
     this.updateVirtualState();
   }
 

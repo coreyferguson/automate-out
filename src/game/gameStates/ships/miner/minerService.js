@@ -7,7 +7,6 @@ class MinerService {
   constructor() {
     this.reset();
     this.massConsumptionPerSecond = 1;
-    this.maxIronProgressBarWidth=30;
     this.cost = 5;
     this.buildTimeInSeconds = 1;
   }
@@ -36,14 +35,6 @@ class MinerService {
               vector.direction, vector.magnitude, miner.sprite.body.velocity);
           }
         }
-
-        // iron progress bar
-        miner.ironProgressBar.x = miner.sprite.x-miner.sprite.width/2;
-        miner.ironProgressBar.y = miner.sprite.y-miner.sprite.height/2-10;
-        miner.ironProgressBar.width =
-          miner.resources.iron *
-          this.maxIronProgressBarWidth /
-          miner.massCapacity;
       });
     }
   }

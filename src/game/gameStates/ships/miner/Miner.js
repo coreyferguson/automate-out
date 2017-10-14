@@ -14,13 +14,6 @@ class Miner {
       iron: 0
     };
     this.massCapacity = 5;
-
-    // iron progress bar
-    this.ironProgressBar = ioc.game.phaserGame.add.image(
-      this.sprite.x,
-      this.sprite.y,
-      'progress-bar-friendly'
-    );
   }
 
 }

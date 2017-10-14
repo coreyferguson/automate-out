@@ -5,9 +5,9 @@ class MapState {
 
   preload() {
     ioc.game.phaserGame.load.image('background', 'assets/images/background.png');
-    ioc.game.phaserGame.load.image('progress-bar-friendly', 'assets/images/progress-bar-friendly.png');
-    ioc.game.phaserGame.load.image('progress-bar-neutral', 'assets/images/progress-bar-neutral.png');
-    ioc.game.phaserGame.load.image('progress-bar-enemy', 'assets/images/progress-bar-enemy.png');
+    // ioc.game.phaserGame.load.image('progress-bar-friendly', 'assets/images/progress-bar-friendly.png');
+    // ioc.game.phaserGame.load.image('progress-bar-neutral', 'assets/images/progress-bar-neutral.png');
+    // ioc.game.phaserGame.load.image('progress-bar-enemy', 'assets/images/progress-bar-enemy.png');
     ioc.mapStates.forEach(state => {
       if (state.preload) state.preload();
     });

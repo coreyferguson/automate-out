@@ -9,15 +9,6 @@ class Iron {
     this.mass = mass;
     this.massCapacity = mass;
     this.type = 'iron';
-
-    // mass progress bar
-    this.massProgressBar = ioc.game.phaserGame.add.image(
-      this.sprite.x,
-      this.sprite.y,
-      'progress-bar-neutral'
-    );
-    this.massProgressBar.width = 0;
-    this.massProgressBar.height = 10;
   }
 
 }

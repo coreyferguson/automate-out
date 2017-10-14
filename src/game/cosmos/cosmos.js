@@ -29,7 +29,6 @@ class Cosmos {
         duration: 10,
         create: () => {
           ioc.ironService.spawn(2200, cosmosMiddleY, 100);
-          ioc.scoutService.spawn(1000, 1000);
         }
       }
     ];
