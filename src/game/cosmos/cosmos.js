@@ -20,7 +20,8 @@ class Cosmos {
         x: cosmosMiddleX,
         y: cosmosMiddleY,
         resources: {
-          iron: 5
+          iron: 5,
+          energy: 0
         }
       }
     };
@@ -29,6 +30,7 @@ class Cosmos {
         duration: 10,
         create: () => {
           ioc.ironService.spawn(2200, cosmosMiddleY, 100);
+          ioc.energyService.spawn(2800, 2000, 200);
         }
       }
     ];

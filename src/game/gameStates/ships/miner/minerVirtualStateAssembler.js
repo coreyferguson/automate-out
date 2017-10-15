@@ -7,7 +7,8 @@ class MinerVirtualStateAssembler {
       y: reality.sprite.y,
       type: reality.type,
       resources: {
-        iron: reality.resources.iron
+        iron: reality.resources.iron,
+        energy: reality.resources.energy
       },
       massCapacity: reality.massCapacity
     };

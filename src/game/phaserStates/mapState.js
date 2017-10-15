@@ -4,7 +4,10 @@ const ioc = require('../../ioc');
 class MapState {
 
   preload() {
-    ioc.game.phaserGame.load.image('background', 'assets/images/background.png');
+    ioc.game.phaserGame.load.crossOrigin = 'anonymous';
+    ioc.game.phaserGame.load.baseURL = ioc.config.assetsBaseUrl;
+
+    ioc.game.phaserGame.load.image('background', 'images/background.png');
     // ioc.game.phaserGame.load.image('progress-bar-friendly', 'assets/images/progress-bar-friendly.png');
     // ioc.game.phaserGame.load.image('progress-bar-neutral', 'assets/images/progress-bar-neutral.png');
     // ioc.game.phaserGame.load.image('progress-bar-enemy', 'assets/images/progress-bar-enemy.png');
@@ -67,6 +70,12 @@ class MapState {
         couldBuild = false;
       }
     }
+  }
+
+  render() {
+    // if (ioc.minerService.miners && ioc.minerService.miners.length > 0) {
+    //   ioc.game.phaserGame.debug.spriteInfo(ioc.minerService.miners[0].sprite, 32, 32);
+    // }
   }
 
 }

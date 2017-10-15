@@ -4,11 +4,11 @@ const ioc = require('../../../../ioc');
 class IronGameState {
 
   preload() {
-    ioc.game.phaserGame.load.image('iron', 'images/iron_50x50.png');
+    ioc.game.phaserGame.load.image('energy', 'images/energy_50x50.png');
   }
 
   create() {
-    ioc.ironService.reset();
+    ioc.energyService.reset();
     this.updateVirtualState();
   }
 
@@ -17,7 +17,8 @@ class IronGameState {
   }
 
   updateVirtualState() {
-    ioc.state.irons = ioc.ironVirtualStateAssembler.toVirtuals(ioc.ironService.irons);
+    ioc.state.energies = ioc.energyVirtualStateAssembler.toVirtuals(
+      ioc.energyService.energies);
   }
 
 }

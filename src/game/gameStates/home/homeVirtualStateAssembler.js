@@ -6,7 +6,8 @@ class HomeVirtualStateAssembler {
       x: reality.sprite.x,
       y: reality.sprite.y,
       resources: {
-        iron: reality.resources.iron
+        iron: reality.resources.iron,
+        energy: reality.resources.energy
       }
     };
   }

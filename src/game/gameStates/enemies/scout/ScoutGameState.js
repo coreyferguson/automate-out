@@ -4,7 +4,7 @@ const ioc = require('../../../../ioc');
 class ScoutGameState {
 
   preload() {
-    ioc.game.phaserGame.load.image('enemy-scout', 'assets/enemies/scout_60x100.png');
+    ioc.game.phaserGame.load.image('enemy-scout', 'enemies/scout_60x100.png');
   }
 
   create() {

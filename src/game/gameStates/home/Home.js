@@ -9,7 +9,8 @@ class Home {
     options = options || {};
     this.sprite = options.sprite;
     this.resources = Object.assign({
-      iron: 5
+      iron: 5,
+      energy: 0
     }, options.resources);
   }
 

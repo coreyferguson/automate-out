@@ -1,6 +1,7 @@
 
 const container = require('./container');
 
+container.config = require('../config');
 container.game = require('../game');
 container.cosmos = require('../game/cosmos');
 
@@ -19,6 +20,7 @@ container.mapStates = [
   require('../game/gameStates/ships/miner'),
   require('../game/gameStates/enemies/scout'),
   require('../game/gameStates/resources/iron'),
+  require('../game/gameStates/resources/energy'),
 ];
 
 // Home
@@ -35,6 +37,9 @@ container.minerVirtualStateAssembler = require('../game/gameStates/ships/miner/m
 // Resource: Iron
 container.ironService = require('../game/gameStates/resources/iron/ironService');
 container.ironVirtualStateAssembler = require('../game/gameStates/resources/iron/ironVirtualStateAssembler');
+// Resource: Energy
+container.energyService = require('../game/gameStates/resources/energy/energyService');
+container.energyVirtualStateAssembler = require('../game/gameStates/resources/energy/energyVirtualStateAssembler');
 
 // Enemy: Scout
 container.scoutService = require('../game/gameStates/enemies/scout/scoutService');

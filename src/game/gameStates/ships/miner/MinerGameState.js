@@ -4,7 +4,7 @@ const ioc = require('../../../../ioc');
 class MinerGameState {
 
   preload() {
-    ioc.game.phaserGame.load.image('miner', 'assets/ships/miner_60x100.png');
+    ioc.game.phaserGame.load.image('miner', 'ships/miner_100x100.png');
   }
 
   create() {

@@ -1,12 +1,11 @@
 
 class MinerFirstImpl {
 
-  getVector(game, miner) {
-    const resources = game.space.resources;
-    if(miner.x>resources[0].x){
+  getVelocity(miner, state, phaser) {
+    if(miner.x>state.irons[0].x){
       return { // move
-        direction: 180, // angle, in degrees, to aim your saucer
-        magnitude: 100// speed, >=0, <=100
+        angle: 180, // angle, in degrees, to aim your saucer
+        speed: 100 // speed, >=0, <=100
       };
     }
   }

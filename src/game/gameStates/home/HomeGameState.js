@@ -4,7 +4,7 @@ const ioc = require('../../../ioc');
 class HomeGameState {
 
   preload() {
-    ioc.game.phaserGame.load.image('home', 'assets/ships/home_100x100.png');
+    ioc.game.phaserGame.load.image('home', 'ships/home_100x100.png');
   }
 
   create() {
