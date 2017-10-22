@@ -23,6 +23,9 @@ container.mapStates = [
   require('../game/gameStates/resources/energy'),
 ];
 
+// State: GameOver
+container.gameOverState = require('../game/phaserStates/gameOverState');
+
 // Home
 container.homeService = require('../game/gameStates/home/homeService');
 container.homeVirtualStateAssembler  = require('../game/gameStates/home/homeVirtualStateAssembler');

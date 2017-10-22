@@ -17,6 +17,8 @@ class MapState {
   }
 
   create() {
+    ioc.state.mapStateStart = ioc.game.phaserGame.time.now;
+
     ioc.game.phaserGame.physics.startSystem(Phaser.Physics.ARCADE);
     ioc.game.phaserGame.world.setBounds(
       ioc.cosmos.init.bounds.x,
@@ -53,6 +55,11 @@ class MapState {
   }
 
   update() {
+    if (!ioc.homeService.home) {
+      ioc.state.mapStateEnd = ioc.game.phaserGame.time.now;
+      ioc.game.phaserGame.state.start('gameOverState');
+    }
+
     ioc.mapStates.forEach(state => {
       if (state.update) state.update();
     });
