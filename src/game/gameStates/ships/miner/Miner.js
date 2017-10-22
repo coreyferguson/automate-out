@@ -8,8 +8,8 @@ class Miner {
     this.sprite = ioc.game.phaserGame.add.sprite(x, y, 'miner');
     this.sprite.scale.setTo(0.25, 0.25);
     this.sprite.anchor.setTo(0.5, 0.5);
-    this.sprite.enableBody = true;
     ioc.game.phaserGame.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+    this.sprite.enableBody = true;
     this.resources = {
       iron: 0,
       energy: 0
@@ -61,7 +61,7 @@ class Miner {
     // 1 energy = 1000 fuel
     if (this.fuel < this.fuelCapacity) {
       const home = ioc.homeService.home;
-      if (Phaser.Rectangle.intersects(this.sprite, home.sprite)) {
+      if (home && Phaser.Rectangle.intersects(this.sprite, home.sprite)) {
         if (home.resources.energy > 0) {
           home.resources.energy -= this.fuelConsumptionPerSecond;
           this.fuel += 1000;

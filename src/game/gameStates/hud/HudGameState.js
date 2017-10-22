@@ -56,8 +56,10 @@ class HudGameState {
   }
 
   update() {
-    this.ironCounterText.setText(ioc.state.home.resources.iron);
-    this.energyCounterText.setText(ioc.state.home.resources.energy);
+    if (ioc.state.home) {
+      this.ironCounterText.setText(ioc.state.home.resources.iron);
+      this.energyCounterText.setText(ioc.state.home.resources.energy);
+    }
   }
 
 }

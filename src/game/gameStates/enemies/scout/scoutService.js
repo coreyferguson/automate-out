@@ -15,6 +15,7 @@ class ScoutService {
   }
 
   move() {
+    this.updateModes();
     // get centroid of all miners
     let needsCentroid = false;
     this.scouts.forEach(scout => {
@@ -33,12 +34,26 @@ class ScoutService {
     this.scouts.forEach(scout => {
       scout.sprite.body.velocity.x = 0;
       scout.sprite.body.velocity.y = 0;
-      let nearest = this.nearestMiner(scout);
-      if (!nearest.distance) return;
-      if (nearest.distance < 200) scout.mode = 'nearestMiner';
+      let nearestMiner = this.nearestMiner(scout)
       if (scout.mode === 'centroid') this.moveToPosition(scout, centroid);
       else if (scout.mode === 'nearestMiner')
-        this.moveToPosition(scout, nearest.miner.sprite);
+        this.moveToPosition(scout, nearestMiner.miner.sprite);
+      else if (scout.mode === 'home')
+        this.moveToPosition(scout, ioc.homeService.home.sprite);
+    });
+  }
+
+  updateModes() {
+    this.scouts.forEach(scout => {
+      let nearestMiner = this.nearestMiner(scout);
+      if (!nearestMiner && ioc.homeService.home)
+        scout.mode = 'home';
+      else if (nearestMiner && nearestMiner.distance < 200)
+        scout.mode = 'nearestMiner'
+      else if (nearestMiner && nearestMiner.distance >= 200)
+        scout.mode = 'centroid';
+      else
+        scout.mode = undefined;
     });
   }
 
@@ -78,7 +93,8 @@ class ScoutService {
         }
       }
     }
-    return { distance, miner };
+    if (!distance) return undefined;
+    else return { distance, miner };
   }
 
   spawn(x, y) {
@@ -88,6 +104,7 @@ class ScoutService {
 
   attack() {
     this.scouts.forEach(scout => {
+      // attack miners
       ioc.minerService.miners.forEach(miner => {
         ioc.game.phaserGame.physics.arcade.collide(
           scout.sprite,
@@ -97,6 +114,16 @@ class ScoutService {
           }
         );
       });
+      // attack home
+      if (ioc.homeService.home) {
+        ioc.game.phaserGame.physics.arcade.collide(
+          scout.sprite,
+          ioc.homeService.home.sprite,
+          () => {
+            ioc.homeService.attack()
+          }
+        );
+      }
     });
   }
 

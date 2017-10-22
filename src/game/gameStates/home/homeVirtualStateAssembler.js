@@ -2,7 +2,7 @@
 class HomeVirtualStateAssembler {
 
   toVirtual(reality) {
-    return {
+    if (reality) return {
       x: reality.sprite.x,
       y: reality.sprite.y,
       resources: {

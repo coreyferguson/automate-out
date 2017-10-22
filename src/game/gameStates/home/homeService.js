@@ -13,12 +13,7 @@ class HomeService {
   }
 
   spawn() {
-    const x = ioc.cosmos.init.home.x;
-    const y = ioc.cosmos.init.home.y;
-    const sprite = ioc.game.phaserGame.add.sprite(x, y, 'home');
-    sprite.anchor.setTo(0.5, 0.5);
-    sprite.angle = 0;
-    this.home = new Home({ sprite });
+    this.home = new Home(ioc.cosmos.init.home.x, ioc.cosmos.init.home.y);
   }
 
   /**
@@ -40,6 +35,11 @@ class HomeService {
         }
       });
     return couldBuild;
+  }
+
+  attack() {
+    this.home.sprite.destroy();
+    this.home = undefined;
   }
 
 }
