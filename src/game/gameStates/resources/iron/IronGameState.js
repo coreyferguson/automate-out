@@ -8,7 +8,6 @@ class IronGameState {
   }
 
   create() {
-    ioc.ironService.reset();
     this.updateVirtualState();
   }
 
@@ -18,6 +17,10 @@ class IronGameState {
 
   updateVirtualState() {
     ioc.state.irons = ioc.ironVirtualStateAssembler.toVirtuals(ioc.ironService.irons);
+  }
+
+  reset() {
+    ioc.ironService.reset();
   }
 
 }

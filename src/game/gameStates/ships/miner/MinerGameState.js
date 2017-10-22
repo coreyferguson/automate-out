@@ -8,7 +8,6 @@ class MinerGameState {
   }
 
   create() {
-    ioc.minerService.reset();
     this.updateVirtualState();
   }
 
@@ -19,6 +18,10 @@ class MinerGameState {
 
   updateVirtualState() {
     ioc.state.miners = ioc.minerVirtualStateAssembler.toVirtuals(ioc.minerService.miners);
+  }
+
+  reset() {
+    ioc.minerService.reset();
   }
 
 }

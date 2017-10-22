@@ -8,7 +8,6 @@ class ScoutGameState {
   }
 
   create() {
-    ioc.scoutService.reset();
     this.updateVirtualState();
   }
 
@@ -21,6 +20,10 @@ class ScoutGameState {
   updateVirtualState() {
     ioc.state.scouts = ioc.scoutVirtualStateAssembler.toVirtuals(
       ioc.scoutService.scouts);
+  }
+
+  reset() {
+    ioc.scoutService.reset();
   }
 
 }

@@ -25,6 +25,9 @@ class GameOverState {
   }
 
   update() {
+    if (ioc.game.phaserGame.input.activePointer.isDown) {
+      ioc.game.reset();
+    }
   }
 
 }

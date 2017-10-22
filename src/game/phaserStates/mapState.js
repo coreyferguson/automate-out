@@ -63,20 +63,6 @@ class MapState {
     ioc.mapStates.forEach(state => {
       if (state.update) state.update();
     });
-
-    // build from user queue
-    let couldBuild = true;
-    while (couldBuild) {
-      let buildItem = ioc.buildQueueUserImpl[0];
-      if (buildItem) {
-        couldBuild = ioc.homeService.construct(buildItem);
-        if (couldBuild) {
-          ioc.buildQueueUserImpl.shift();
-        }
-      } else {
-        couldBuild = false;
-      }
-    }
   }
 
   render() {

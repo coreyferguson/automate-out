@@ -9,6 +9,13 @@ class Game {
     this.height = height;
     this.phaserGame.state.add('mapState', ioc.mapState);
     this.phaserGame.state.add('gameOverState', ioc.gameOverState);
+    this.reset();
+  }
+
+  reset() {
+    ioc.mapStates
+      .filter(mapState => mapState.reset)
+      .forEach(mapState => mapState.reset());
     this.phaserGame.state.start('mapState');
   }
 
