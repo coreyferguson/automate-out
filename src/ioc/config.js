@@ -7,7 +7,7 @@ container.cosmos = require('../game/cosmos');
 
 // User Impl
 container.buildQueueUserImpl = require('../user/buildQueueCoreyImpl');
-container.minerUserImpl = require('../user/minerCoreyImpl');
+container.minerUserImpl = require('../user/minerZoeImpl');
 
 // State: Map
 container.state = {}; // state given to user components
