@@ -41,6 +41,13 @@ class MinerService {
     });
   }
 
+  attack(miner) {
+    this.miners = this.miners.filter(m => {
+      return miner !== m;
+    });
+    miner.sprite.destroy();
+  }
+
 }
 
 module.exports = new MinerService();

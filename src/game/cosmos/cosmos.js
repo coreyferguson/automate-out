@@ -31,6 +31,7 @@ class Cosmos {
         create: () => {
           ioc.ironService.spawn(2200, cosmosMiddleY, 100);
           ioc.energyService.spawn(2800, 2000, 200);
+          ioc.scoutService.spawn(2000, 2000);
         }
       }
     ];

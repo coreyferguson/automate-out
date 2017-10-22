@@ -34,9 +34,10 @@ class ScoutService {
       scout.sprite.body.velocity.x = 0;
       scout.sprite.body.velocity.y = 0;
       let nearest = this.nearestMiner(scout);
+      if (!nearest.distance) return;
       if (nearest.distance < 200) scout.mode = 'nearestMiner';
       if (scout.mode === 'centroid') this.moveToPosition(scout, centroid);
-      else if (nearest.distance > 50 && scout.mode === 'nearestMiner')
+      else if (scout.mode === 'nearestMiner')
         this.moveToPosition(scout, nearest.miner.sprite);
     });
   }
@@ -83,6 +84,20 @@ class ScoutService {
   spawn(x, y) {
     const scout = new Scout(x, y);
     this.scouts.push(scout);
+  }
+
+  attack() {
+    this.scouts.forEach(scout => {
+      ioc.minerService.miners.forEach(miner => {
+        ioc.game.phaserGame.physics.arcade.collide(
+          scout.sprite,
+          miner.sprite,
+          () => {
+            ioc.minerService.attack(miner);
+          }
+        );
+      });
+    });
   }
 
 }

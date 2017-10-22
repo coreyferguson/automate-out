@@ -14,11 +14,13 @@ class ScoutGameState {
 
   update() {
     ioc.scoutService.move();
+    ioc.scoutService.attack();
     this.updateVirtualState();
   }
 
   updateVirtualState() {
-    ioc.state.scouts = ioc.scoutVirtualStateAssembler.toVirtuals(ioc.scoutService.scouts);
+    ioc.state.scouts = ioc.scoutVirtualStateAssembler.toVirtuals(
+      ioc.scoutService.scouts);
   }
 
 }
