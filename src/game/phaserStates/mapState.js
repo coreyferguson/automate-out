@@ -36,39 +36,21 @@ class MapState {
     ioc.mapStates.forEach(state => {
       if (state.create) state.create();
     });
-
-    ioc.state.timeIndex = 0;
-    function play() {
-      const time = ioc.cosmos.timeline[ioc.state.timeIndex];
-      if (time) {
-        const duration = Phaser.Timer.SECOND * time.duration;
-        ioc.game.phaserGame.time.events.add(duration, () => {
-          ioc.state.timeIndex++;
-          play();
-        });
-        time.create();
-      } else {
-        // finished
-      }
-    }
-    play();
   }
 
   update() {
-    if (!ioc.homeService.home) {
-      ioc.state.mapStateEnd = ioc.game.phaserGame.time.now;
-      ioc.game.phaserGame.state.start('gameOverState');
-    }
-
+    this.gameOver();
     ioc.mapStates.forEach(state => {
       if (state.update) state.update();
     });
   }
 
-  render() {
-    // if (ioc.minerService.miners && ioc.minerService.miners.length > 0) {
-    //   ioc.game.phaserGame.debug.spriteInfo(ioc.minerService.miners[0].sprite, 32, 32);
-    // }
+  gameOver() {
+    if (!ioc.homeService.home) {
+      ioc.state.mapStateEnd = ioc.game.phaserGame.time.now;
+      ioc.game.phaserGame.time.events.stop();
+      ioc.game.phaserGame.state.start('gameOverState');
+    }
   }
 
 }

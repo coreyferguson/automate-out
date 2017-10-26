@@ -14,6 +14,7 @@ container.state = {}; // state given to user components
 container.mapState = require('../game/phaserStates/mapState');
 // TODO: render mapStates in reverse order
 container.mapStates = [
+  require('../game/gameStates/time'),
   require('../game/gameStates/buildQueue'),
   require('../game/gameStates/camera'),
   require('../game/gameStates/hud'),
